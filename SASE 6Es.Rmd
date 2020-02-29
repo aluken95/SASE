@@ -1,0 +1,1654 @@
+---
+title: "SASE"
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+
+##Calculating scores from the pilot data (population)
+
+You can skip all of this chunk. 
+
+```{r; echo = TRUE}
+#Run distributions from pilot ----
+
+dist <- read.delim("C:/Users/Amanda/Desktop/AllNH.txt")
+dist
+str(dist)
+dist <- na.omit(dist)
+dist
+
+#Break down Section 1 for pilot distriubtions ----
+distColB <- dist$b
+
+for(i in 1:length(distColB)){
+  if(distColB[i] ==5)
+    distColB[i] = 2
+  else if(distColB[i] == 4)
+    distColB[i] = 1
+  else if (distColB[i] == 3)
+    distColB[i] = 0
+  else if (distColB[i] == 2)
+    distColB[i] = -1
+  else if (distColB[i] == 1)
+    distColB[i] = -2
+}
+
+engageB <- distColB
+engageB
+
+distColC <- dist$c
+
+for(i in 1:length(distColC)){
+  if(distColC[i] ==5)
+    distColC[i] = 2
+  else if(distColC[i] == 4)
+    distColC[i] = 1
+  else if (distColC[i] == 3)
+    distColC[i] = 0
+  else if (distColC[i] == 2)
+    distColC[i] = -1
+  else if (distColC[i] == 1)
+    distColC[i] = -2
+}
+
+envisionC <- distColC
+
+distColD <- dist$d
+
+for(i in 1:length(distColD)){
+  if(distColD[i] ==5)
+    distColD[i] = 2
+  else if(distColD[i] == 4)
+    distColD[i] = 1
+  else if (distColD[i] == 3)
+    distColD[i] = 0
+  else if (distColD[i] == 2)
+    distColD[i] = -1
+  else if (distColD[i] == 1)
+    distColD[i] = -2
+}
+
+executeD<- distColD
+
+distColE <- dist$e
+
+for(i in 1:length(distColE)){
+  if(distColE[i] ==5)
+    distColE[i] = 2
+  else if(distColE[i] == 4)
+    distColE[i] = 1
+  else if (distColE[i] == 3)
+    distColE[i] = 0
+  else if (distColE[i] == 2)
+    distColE[i] = -1
+  else if (distColE[i] == 1)
+    distColE[i] = -2
+}
+
+elasticE<- distColE
+
+distColF <- dist$f
+
+for(i in 1:length(distColF)){
+  if(distColF[i] ==5)
+    distColF[i] = 2
+  else if(distColF[i] == 4)
+    distColF[i] = 1
+  else if (distColF[i] == 3)
+    distColF[i] = 0
+  else if (distColF[i] == 2)
+    distColF[i] = -1
+  else if (distColF[i] == 1)
+    distColF[i] = -2
+}
+
+executeF<- distColF
+
+distColG <- dist$g
+
+for(i in 1:length(distColG)){
+  if(distColG[i] ==5)
+    distColG[i] = 2
+  else if(distColG[i] == 4)
+    distColG[i] = 1
+  else if (distColG[i] == 3)
+    distColG[i] = 0
+  else if (distColG[i] == 2)
+    distColG[i] = -1
+  else if (distColG[i] == 1)
+    distColG[i] = -2
+}
+
+engageG<- distColG
+
+distColH <- dist$h
+
+for(i in 1:length(distColH)){
+  if(distColH[i] ==5)
+    distColH[i] = 2
+  else if(distColH[i] == 4)
+    distColH[i] = 1
+  else if (distColH[i] == 3)
+    distColH[i] = 0
+  else if (distColH[i] == 2)
+    distColH[i] = -1
+  else if (distColH[i] == 1)
+    distColH[i] = -2
+}
+
+empowerH<- distColH
+
+distColI <- dist$i
+
+for(i in 1:length(distColI)){
+  if(distColI[i] ==5)
+    distColI[i] = 2
+  else if(distColI[i] == 4)
+    distColI[i] = 1
+  else if (distColI[i] == 3)
+    distColI[i] = 0
+  else if (distColI[i] == 2)
+    distColI[i] = -1
+  else if (distColI[i] == 1)
+    distColI[i] = -2
+}
+
+elasticI<- distColI
+
+distColJ <- dist$j
+
+for(i in 1:length(distColJ)){
+  if(distColJ[i] ==5)
+    distColJ[i] = 2
+  else if(distColJ[i] == 4)
+    distColJ[i] = 1
+  else if (distColJ[i] == 3)
+    distColJ[i] = 0
+  else if (distColJ[i] == 2)
+    distColJ[i] = -1
+  else if (distColJ[i] == 1)
+    distColJ[i] = -2
+}
+
+energizeJ <- distColJ
+
+distColK <- dist$k
+
+for(i in 1:length(distColK)){
+  if(distColK[i] ==5)
+    distColK[i] = 2
+  else if(distColK[i] == 4)
+    distColK[i] = 1
+  else if (distColK[i] == 3)
+    distColK[i] = 0
+  else if (distColK[i] == 2)
+    distColK[i] = -1
+  else if (distColK[i] == 1)
+    distColK[i] = -2
+}
+
+envisionK<- distColK
+
+distColL <- dist$l
+
+for(i in 1:length(distColL)){
+  if(distColL[i] ==5)
+    distColL[i] = 2
+  else if(distColL[i] == 4)
+    distColL[i] = 1
+  else if (distColL[i] == 3)
+    distColL[i] = 0
+  else if (distColL[i] == 2)
+    distColL[i] = -1
+  else if (distColL[i] == 1)
+    distColL[i] = -2
+}
+
+empowerL<- distColL
+
+distColM <- dist$m
+
+for(i in 1:length(distColM)){
+  if(distColM[i] ==5)
+    distColM[i] = 2
+  else if(distColM[i] == 4)
+    distColM[i] = 1
+  else if (distColM[i] == 3)
+    distColM[i] = 0
+  else if (distColM[i] == 2)
+    distColM[i] = -1
+  else if (distColM[i] == 1)
+    distColM[i] = -2
+}
+
+envisionM<- distColM
+
+distColN <- dist$n
+
+for(i in 1:length(distColN)){
+  if(distColN[i] ==5)
+    distColN[i] = 2
+  else if(distColN[i] == 4)
+    distColN[i] = 1
+  else if (distColN[i] == 3)
+    distColN[i] = 0
+  else if (distColN[i] == 2)
+    distColN[i] = -1
+  else if (distColN[i] == 1)
+    distColN[i] = -2
+}
+
+engageN<- distColN
+
+distColO <- dist$o
+
+for(i in 1:length(distColO)){
+  if(distColO[i] ==5)
+    distColO[i] = 2
+  else if(distColO[i] == 4)
+    distColO[i] = 1
+  else if (distColO[i] == 3)
+    distColO[i] = 0
+  else if (distColO[i] == 2)
+    distColO[i] = -1
+  else if (distColO[i] == 1)
+    distColO[i] = -2
+}
+
+energizeO<- distColO
+
+distColP <- dist$p
+
+for(i in 1:length(distColP)){
+  if(distColP[i] ==5)
+    distColP[i] = 2
+  else if(distColP[i] == 4)
+    distColP[i] = 1
+  else if (distColP[i] == 3)
+    distColP[i] = 0
+  else if (distColP[i] == 2)
+    distColP[i] = -1
+  else if (distColP[i] == 1)
+    distColP[i] = -2
+}
+
+executeP <- distColP
+
+distColQ <- dist$q
+
+for(i in 1:length(distColQ)){
+  if(distColQ[i] ==5)
+    distColQ[i] = 2
+  else if(distColQ[i] == 4)
+    distColQ[i] = 1
+  else if (distColQ[i] == 3)
+    distColQ[i] = 0
+  else if (distColQ[i] == 2)
+    distColQ[i] = -1
+  else if (distColQ[i] == 1)
+    distColQ[i] = -2
+}
+
+elasticQ<- distColQ
+
+distColR <- dist$r
+
+for(i in 1:length(distColR)){
+  if(distColR[i] ==5)
+    distColR[i] = 2
+  else if(distColR[i] == 4)
+    distColR[i] = 1
+  else if (distColR[i] == 3)
+    distColR[i] = 0
+  else if (distColR[i] == 2)
+    distColR[i] = -1
+  else if (distColR[i] == 1)
+    distColR[i] = -2
+}
+
+empowerR<- distColR
+
+distColS <- dist$s
+
+for(i in 1:length(distColS)){
+  if(distColS[i] ==5)
+    distColS[i] = 2
+  else if(distColS[i] == 4)
+    distColS[i] = 1
+  else if (distColS[i] == 3)
+    distColS[i] = 0
+  else if (distColS[i] == 2)
+    distColS[i] = -1
+  else if (distColS[i] == 1)
+    distColS[i] = -2
+}
+
+energizeS<- distColS
+
+#Break down Section 2 for pilot distributions -----
+#Strategic vs. Inspiring
+  distColT <- dist$t
+
+  for(i in 1:length(distColT)){
+    if(distColT[i] >= 3)
+      distColT[i] = 0
+    else if(distColT[i] == 2)
+      distColT[i] = 1
+    else if (distColT[i] == 1)
+      distColT[i] = 2
+  }
+  
+  tEmpower <- distColT
+  tEmpower
+  
+  distColT <- dist$t
+  
+  for(i in 1:length(distColT)){
+    if(distColT[i] <= 3)
+      distColT[i] = 0
+    else if(distColT[i] == 4)
+      distColT[i] = 1
+    else if (distColT[i] == 5)
+      distColT[i] = 2
+  }
+  
+  tEnergize <- distColT
+  tEnergize
+  
+#I make decisions with input from others vs I take initiative to get things done.
+  distColU <- dist$u
+  
+  for(i in 1:length(distColU)){
+    if(distColU[i] >= 3)
+      distColU[i] = 0
+    else if(distColU[i] == 2)
+      distColU[i] = 1
+    else if (distColU[i] == 1)
+      distColU[i] = 2
+  }
+  
+  UEngage <- distColU
+  UEngage
+  
+  distColU <- dist$u
+  
+  for(i in 1:length(distColU)){
+    if(distColU[i] <= 3)
+      distColU[i] = 0
+    else if(distColU[i] == 4)
+      distColU[i] = 1
+    else if (distColU[i] == 5)
+      distColU[i] = 2
+  }
+  
+  UExecute <- distColU
+  UExecute
+  
+#I pay attention to the details vs I focus on the big picture
+  distColV <- dist$v
+  
+  for(i in 1:length(distColV)){
+    if(distColV[i] >= 3)
+      distColV[i] = 0
+    else if(distColV[i] == 2)
+      distColV[i] = 1
+    else if (distColV[i] == 1)
+      distColV[i] = 2
+  }
+  
+  vExecute <- distColV
+  vExecute
+  
+  distColV <- dist$v
+  
+  for(i in 1:length(distColV)){
+    if(distColV[i] <= 3)
+      distColV[i] = 0
+    else if(distColV[i] == 4)
+      distColV[i] = 1
+    else if (distColV[i] == 5)
+      distColV[i] = 2
+  }
+  
+  vEnvision <- distColV
+  vEnvision
+
+#Creative vs Diplomatic
+  distColW <- dist$w
+  
+  for(i in 1:length(distColW)){
+    if(distColW[i] >= 3)
+      distColW[i] = 0
+    else if(distColW[i] == 2)
+      distColW[i] = 1
+    else if (distColW[i] == 1)
+      distColW[i] = 2
+  }
+  
+  wEnvision <- distColW
+  wEnvision
+  
+  distColW <- dist$w
+  
+  for(i in 1:length(distColW)){
+    if(distColW[i] <= 3)
+      distColW[i] = 0
+    else if(distColW[i] == 4)
+      distColW[i] = 1
+    else if (distColW[i] == 5)
+      distColW[i] = 2
+  }
+  
+  wEnergize <- distColW
+  wEnergize
+
+#Adaptable vs Timely
+  distColX <- dist$x
+  
+  for(i in 1:length(distColX)){
+    if(distColX[i] >= 3)
+      distColX[i] = 0
+    else if(distColX[i] == 2)
+      distColX[i] = 1
+    else if (distColX[i] == 1)
+      distColX[i] = 2
+  }
+  
+  xElastic <- distColX
+  xElastic
+  
+  distColX <- dist$x
+  
+  for(i in 1:length(distColX)){
+    if(distColX[i] <= 3)
+      distColX[i] = 0
+    else if(distColX[i] == 4)
+      distColX[i] = 1
+    else if (distColX[i] == 5)
+      distColX[i] = 2
+  }
+  
+  xExecute <- distColX
+  xExecute  
+  
+#I inspire my team to accomplish our goals vs I find creative solutions
+  distColY <- dist$y
+  
+  for(i in 1:length(distColY)){
+    if(distColY[i] >= 3)
+      distColY[i] = 0
+    else if(distColY[i] == 2)
+      distColY[i] = 1
+    else if (distColY[i] == 1)
+      distColY[i] = 2
+  }
+  
+  yEnergize <- distColY
+  yEnergize
+  
+  distColY <- dist$y
+  
+  for(i in 1:length(distColY)){
+    if(distColY[i] <= 3)
+      distColY[i] = 0
+    else if(distColY[i] == 4)
+      distColY[i] = 1
+    else if (distColY[i] == 5)
+      distColY[i] = 2
+  }
+  
+  yElastic <- distColY
+  yElastic    
+  
+#Supportive vs Flexible
+  distColZ <- dist$z
+  
+  for(i in 1:length(distColZ)){
+    if(distColZ[i] >= 3)
+      distColZ[i] = 0
+    else if(distColZ[i] == 2)
+      distColZ[i] = 1
+    else if (distColZ[i] == 1)
+      distColZ[i] = 2
+  }
+  
+  zEmpower <- distColZ
+  zEmpower
+  
+  distColZ <- dist$z
+  
+  for(i in 1:length(distColZ)){
+    if(distColZ[i] <= 3)
+      distColZ[i] = 0
+    else if(distColZ[i] == 4)
+      distColZ[i] = 1
+    else if (distColZ[i] == 5)
+      distColZ[i] = 2
+  }
+  
+  zElastic <- distColZ
+  zElastic  
+  
+#I enjoy planning for the future vs. I enjoy helping others accomplish their goals.
+
+  distColAA <- dist$aa
+  
+  for(i in 1:length(distColAA)){
+    if(distColAA[i] >= 3)
+      distColAA[i] = 0
+    else if(distColAA[i] == 2)
+      distColAA[i] = 1
+    else if (distColAA[i] == 1)
+      distColAA[i] = 2
+  }
+  
+  aaEnvision <- distColAA
+  aaEnvision
+  
+  distColAA <- dist$aa
+  
+  for(i in 1:length(distColAA)){
+    if(distColAA[i] <= 3)
+      distColAA[i] = 0
+    else if(distColAA[i] == 4)
+      distColAA[i] = 1
+    else if (distColAA[i] == 5)
+      distColAA[i] = 2
+  }
+  
+  aaEmpower <- distColAA
+  aaEmpower    
+  
+#I encourage quiet team members to voice their opinions vs. I enjoy working in interdisciplinary environments.
+  
+  distColAB <- dist$ab
+  
+  for(i in 1:length(distColAB)){
+    if(distColAB[i] >= 3)
+      distColAB[i] = 0
+    else if(distColAB[i] == 2)
+      distColAB[i] = 1
+    else if (distColAB[i] == 1)
+      distColAB[i] = 2
+  }
+  
+  abEmpower <- distColAB
+  abEmpower
+  
+  distColAB <- dist$ab
+  
+  for(i in 1:length(distColAB)){
+    if(distColAB[i] <= 3)
+      distColAB[i] = 0
+    else if(distColAB[i] == 4)
+      distColAB[i] = 1
+    else if (distColAB[i] == 5)
+      distColAB[i] = 2
+  }
+  
+  abElastic <- distColAB
+  abElastic    
+  
+#I am a trailblazer vs I am a promotoer.
+  
+  distColAC <- dist$ac
+  
+  for(i in 1:length(distColAC)){
+    if(distColAC[i] >= 3)
+      distColAC[i] = 0
+    else if(distColAC[i] == 2)
+      distColAC[i] = 1
+    else if (distColAC[i] == 1)
+      distColAC[i] = 2
+  }
+  
+  acEnvision <- distColAC
+  acEnvision
+  
+  distColAC <- dist$ab
+  
+  for(i in 1:length(distColAC)){
+    if(distColAC[i] <= 3)
+      distColAC[i] = 0
+    else if(distColAC[i] == 4)
+      distColAC[i] = 1
+    else if (distColAC[i] == 5)
+      distColAC[i] = 2
+  }
+  
+  acEngage <- distColAC
+  acEngage      
+
+#I am communicative vs I am concise.
+  
+  distColAD <- dist$ad
+  
+  for(i in 1:length(distColAD)){
+    if(distColAD[i] >= 3)
+      distColAD[i] = 0
+    else if(distColAD[i] == 2)
+      distColAD[i] = 1
+    else if (distColAD[i] == 1)
+      distColAD[i] = 2
+  }
+  
+  adEngage <- distColAD
+  adEngage
+  
+  distColAD <- dist$ab
+  
+  for(i in 1:length(distColAD)){
+    if(distColAD[i] <= 3)
+      distColAD[i] = 0
+    else if(distColAD[i] == 4)
+      distColAD[i] = 1
+    else if (distColAD[i] == 5)
+      distColAD[i] = 2
+  }
+  
+  adExecute <- distColAD
+  adExecute     
+      
+#It means more to me when everyone is included vs happy.
+  
+  distColAE <- dist$ae
+  
+  for(i in 1:length(distColAE)){
+    if(distColAE[i] >= 3)
+      distColAE[i] = 0
+    else if(distColAE[i] == 2)
+      distColAE[i] = 1
+    else if (distColAE[i] == 1)
+      distColAE[i] = 2
+  }
+  
+  aeEngage <- distColAE
+  aeEngage
+  
+  distColAE <- dist$ab
+  
+  for(i in 1:length(distColAE)){
+    if(distColAE[i] <= 3)
+      distColAE[i] = 0
+    else if(distColAE[i] == 4)
+      distColAE[i] = 1
+    else if (distColAE[i] == 5)
+      distColAE[i] = 2
+  }
+  
+  aeEnergize <- distColAE
+  aeEnergize     
+  
+#Break down Section 3 for pilot distributions ----
+  distColAF <- dist$af
+  
+  for(i in 1:length(distColAF)){
+    if(distColAF[i] ==5)
+      distColAF[i] = 2
+    else if(distColAF[i] == 4)
+      distColAF[i] = 1
+    else if (distColAF[i] == 3)
+      distColAF[i] = 0
+    else if (distColAF[i] == 2)
+      distColAF[i] = -1
+    else if (distColAF[i] == 1)
+      distColAF[i] = -2
+  }
+  
+  envisionAF <- distColAF 
+  envisionAF
+  
+  distColAG <- dist$ag
+  
+  for(i in 1:length(distColAG)){
+    if(distColAG[i] ==5)
+      distColAG[i] = 2
+    else if(distColAG[i] == 4)
+      distColAG[i] = 1
+    else if (distColAG[i] == 3)
+      distColAG[i] = 0
+    else if (distColAG[i] == 2)
+      distColAG[i] = -1
+    else if (distColAG[i] == 1)
+      distColAG[i] = -2
+  }
+  
+   executeAG <- distColAG  
+  
+   distColAH <- dist$ah
+   
+   for(i in 1:length(distColAH)){
+     if(distColAH[i] ==5)
+       distColAH[i] = 2
+     else if(distColAH[i] == 4)
+       distColAH[i] = 1
+     else if (distColAH[i] == 3)
+       distColAH[i] = 0
+     else if (distColAH[i] == 2)
+       distColAH[i] = -1
+     else if (distColAH[i] == 1)
+       distColAH[i] = -2
+   }
+   
+   engageAH <- distColAH 
+   
+   distColAI <- dist$ai
+   
+   for(i in 1:length(distColAI)){
+     if(distColAI[i] ==5)
+       distColAI[i] = 2
+     else if(distColAI[i] == 4)
+       distColAI[i] = 1
+     else if (distColAI[i] == 3)
+       distColAI[i] = 0
+     else if (distColAI[i] == 2)
+       distColAI[i] = -1
+     else if (distColAI[i] == 1)
+       distColAI[i] = -2
+   }
+   
+   elasticAI <- distColAI
+   
+   distColAJ <- dist$aj
+   
+   for(i in 1:length(distColAJ)){
+     if(distColAJ[i] ==5)
+       distColAJ[i] = 2
+     else if(distColAJ[i] == 4)
+       distColAJ[i] = 1
+     else if (distColAJ[i] == 3)
+       distColAJ[i] = 0
+     else if (distColAJ[i] == 2)
+       distColAJ[i] = -1
+     else if (distColAJ[i] == 1)
+       distColAJ[i] = -2
+   }
+   
+   empowerAJ <- distColAJ
+   
+   distColAK <- dist$ak
+   
+   for(i in 1:length(distColAK)){
+     if(distColAK[i] ==5)
+       distColAK[i] = 2
+     else if(distColAK[i] == 4)
+       distColAK[i] = 1
+     else if (distColAK[i] == 3)
+       distColAK[i] = 0
+     else if (distColAK[i] == 2)
+       distColAK[i] = -1
+     else if (distColAK[i] == 1)
+       distColAK[i] = -2
+   }
+   
+   energizeAK <- distColAK
+```
+
+##Generating the population distribution
+
+Here I just generated quantiles and the population distribution. You can ignore the boxplots and histograms. 
+
+```{r; echo = TRUE}
+#Calculated E score for pilot distributions ----  
+    
+engage <- cbind(engageB, engageG, engageN, UEngage, acEngage, adEngage, aeEngage, engageAH)
+envision <- cbind(envisionC, envisionK, envisionM, vEnvision, wEnvision, aaEnvision, acEnvision, envisionAF)
+execute <- cbind(executeD, executeF, executeP, UExecute, vExecute, xExecute, adExecute, executeAG)
+elastic <- cbind(elasticE, elasticI, elasticQ, xElastic, yElastic, zElastic, abEmpower, elasticAI)
+empower <- cbind(empowerH, empowerL, empowerR, tEmpower, zEmpower, aaEmpower, abEmpower, empowerAJ) 
+energize <- cbind(energizeJ, energizeO, energizeS, tEnergize, wEnergize, yEnergize, aeEnergize, energizeAK)
+energize
+envision
+
+
+#Pilot Distributions---- 
+#Energize
+  energizePerPerson <- rowSums(energize)
+  energizePerPerson
+  quantile (energizePerPerson, c(0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9, 0.99))
+  hist(energizePerPerson)
+#Elastic
+  elasticPerPerson <- rowSums(elastic)
+  elasticPerPerson
+  quantile (elasticPerPerson, c(0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9, 0.99))
+  hist(elasticPerPerson)
+#Empower
+  empowerPerPerson <- rowSums(empower)
+  empowerPerPerson
+  quantile (empowerPerPerson, c(0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9, 0.99))
+  hist(empowerPerPerson)  
+#Engage
+  engagePerPerson <- rowSums(engage)
+  engagePerPerson
+  quantile (engagePerPerson, c(0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75 ,0.8, 0.9, 0.99))
+  hist(engagePerPerson)
+#Envision
+  envisionPerPerson <- rowSums(envision)
+  envisionPerPerson
+  quantile (envisionPerPerson, c(0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75 ,0.8, 0.9, 0.99)
+  hist(envisionPerPerson)
+#Execute
+  executePerPerson <- rowSums(execute)
+  executePerPerson
+  quantile (executePerPerson, c(0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9, 0.99))
+  hist(executePerPerson)    
+  
+  par(mfrow=c(1,1))
+  boxplot (energizePerPerson, elasticPerPerson, empowerPerPerson, engagePerPerson, envisionPerPerson, executePerPerson, names = c("Energize", "Elastic", "Empower", "Engage", "Envision", "Execute"), las = 2)
+  mtext("Distribution of Each E Score", size = 3, line = -2, outer = TRUE)
+  
+  par(mfrow=c(2,3))
+  hist(energizePerPerson)
+  hist(elasticPerPerson)
+  hist(empowerPerPerson)  
+  hist(engagePerPerson)
+  hist(envisionPerPerson)
+  hist(executePerPerson)  
+```
+
+  
+##Identifying the Percentile Rank of someone's E Scores ----
+
+This chunk just has the calculation of the person's scores. You can skip to the bottom of it.
+```{r; echo = TRUE}
+part <- read.delim("insert file location")
+
+#Break down Section 1 for Individual ----
+partColB <- part$b
+
+for(i in 1:length(partColB)){
+  if(partColB[i] ==5)
+    partColB[i] = 2
+  else if(partColB[i] == 4)
+    partColB[i] = 1
+  else if (partColB[i] == 3)
+    partColB[i] = 0
+  else if (partColB[i] == 2)
+    partColB[i] = -1
+  else if (partColB[i] == 1)
+    partColB[i] = -2
+}
+
+engageB <- partColB
+engageB
+
+partColC <- part$c
+
+for(i in 1:length(partColC)){
+  if(partColC[i] ==5)
+    partColC[i] = 2
+  else if(partColC[i] == 4)
+    partColC[i] = 1
+  else if (partColC[i] == 3)
+    partColC[i] = 0
+  else if (partColC[i] == 2)
+    partColC[i] = -1
+  else if (partColC[i] == 1)
+    partColC[i] = -2
+}
+
+envisionC <- partColC
+
+partColD <- part$d
+
+for(i in 1:length(partColD)){
+  if(partColD[i] ==5)
+    partColD[i] = 2
+  else if(partColD[i] == 4)
+    partColD[i] = 1
+  else if (partColD[i] == 3)
+    partColD[i] = 0
+  else if (partColD[i] == 2)
+    partColD[i] = -1
+  else if (partColD[i] == 1)
+    partColD[i] = -2
+}
+
+executeD<- partColD
+
+partColE <- part$e
+
+for(i in 1:length(partColE)){
+  if(partColE[i] ==5)
+    partColE[i] = 2
+  else if(partColE[i] == 4)
+    partColE[i] = 1
+  else if (partColE[i] == 3)
+    partColE[i] = 0
+  else if (partColE[i] == 2)
+    partColE[i] = -1
+  else if (partColE[i] == 1)
+    partColE[i] = -2
+}
+
+elasticE<- partColE
+
+partColF <- part$f
+
+for(i in 1:length(partColF)){
+  if(partColF[i] ==5)
+    partColF[i] = 2
+  else if(partColF[i] == 4)
+    partColF[i] = 1
+  else if (partColF[i] == 3)
+    partColF[i] = 0
+  else if (partColF[i] == 2)
+    partColF[i] = -1
+  else if (partColF[i] == 1)
+    partColF[i] = -2
+}
+
+executeF<- partColF
+
+partColG <- part$g
+
+for(i in 1:length(partColG)){
+  if(partColG[i] ==5)
+    partColG[i] = 2
+  else if(partColG[i] == 4)
+    partColG[i] = 1
+  else if (partColG[i] == 3)
+    partColG[i] = 0
+  else if (partColG[i] == 2)
+    partColG[i] = -1
+  else if (partColG[i] == 1)
+    partColG[i] = -2
+}
+
+engageG<- partColG
+
+partColH <- part$h
+
+for(i in 1:length(partColH)){
+  if(partColH[i] ==5)
+    partColH[i] = 2
+  else if(partColH[i] == 4)
+    partColH[i] = 1
+  else if (partColH[i] == 3)
+    partColH[i] = 0
+  else if (partColH[i] == 2)
+    partColH[i] = -1
+  else if (partColH[i] == 1)
+    partColH[i] = -2
+}
+
+empowerH<- partColH
+
+partColI <- part$i
+
+for(i in 1:length(partColI)){
+  if(partColI[i] ==5)
+    partColI[i] = 2
+  else if(partColI[i] == 4)
+    partColI[i] = 1
+  else if (partColI[i] == 3)
+    partColI[i] = 0
+  else if (partColI[i] == 2)
+    partColI[i] = -1
+  else if (partColI[i] == 1)
+    partColI[i] = -2
+}
+
+elasticI<- partColI
+
+partColJ <- part$j
+
+for(i in 1:length(partColJ)){
+  if(partColJ[i] ==5)
+    partColJ[i] = 2
+  else if(partColJ[i] == 4)
+    partColJ[i] = 1
+  else if (partColJ[i] == 3)
+    partColJ[i] = 0
+  else if (partColJ[i] == 2)
+    partColJ[i] = -1
+  else if (partColJ[i] == 1)
+    partColJ[i] = -2
+}
+
+energizeJ <- partColJ
+
+partColK <- part$k
+
+for(i in 1:length(partColK)){
+  if(partColK[i] ==5)
+    partColK[i] = 2
+  else if(partColK[i] == 4)
+    partColK[i] = 1
+  else if (partColK[i] == 3)
+    partColK[i] = 0
+  else if (partColK[i] == 2)
+    partColK[i] = -1
+  else if (partColK[i] == 1)
+    partColK[i] = -2
+}
+
+envisionK<- partColK
+
+partColL <- part$l
+
+for(i in 1:length(partColL)){
+  if(partColL[i] ==5)
+    partColL[i] = 2
+  else if(partColL[i] == 4)
+    partColL[i] = 1
+  else if (partColL[i] == 3)
+    partColL[i] = 0
+  else if (partColL[i] == 2)
+    partColL[i] = -1
+  else if (partColL[i] == 1)
+    partColL[i] = -2
+}
+
+empowerL<- partColL
+
+partColM <- part$m
+
+for(i in 1:length(partColM)){
+  if(partColM[i] ==5)
+    partColM[i] = 2
+  else if(partColM[i] == 4)
+    partColM[i] = 1
+  else if (partColM[i] == 3)
+    partColM[i] = 0
+  else if (partColM[i] == 2)
+    partColM[i] = -1
+  else if (partColM[i] == 1)
+    partColM[i] = -2
+}
+
+envisionM<- partColM
+
+partColN <- part$n
+
+for(i in 1:length(partColN)){
+  if(partColN[i] ==5)
+    partColN[i] = 2
+  else if(partColN[i] == 4)
+    partColN[i] = 1
+  else if (partColN[i] == 3)
+    partColN[i] = 0
+  else if (partColN[i] == 2)
+    partColN[i] = -1
+  else if (partColN[i] == 1)
+    partColN[i] = -2
+}
+
+engageN<- partColN
+
+partColO <- part$o
+
+for(i in 1:length(partColO)){
+  if(partColO[i] ==5)
+    partColO[i] = 2
+  else if(partColO[i] == 4)
+    partColO[i] = 1
+  else if (partColO[i] == 3)
+    partColO[i] = 0
+  else if (partColO[i] == 2)
+    partColO[i] = -1
+  else if (partColO[i] == 1)
+    partColO[i] = -2
+}
+
+energizeO<- partColO
+
+partColP <- part$p
+
+for(i in 1:length(partColP)){
+  if(partColP[i] ==5)
+    partColP[i] = 2
+  else if(partColP[i] == 4)
+    partColP[i] = 1
+  else if (partColP[i] == 3)
+    partColP[i] = 0
+  else if (partColP[i] == 2)
+    partColP[i] = -1
+  else if (partColP[i] == 1)
+    partColP[i] = -2
+}
+
+executeP <- partColP
+
+partColQ <- part$q
+
+for(i in 1:length(partColQ)){
+  if(partColQ[i] ==5)
+    partColQ[i] = 2
+  else if(partColQ[i] == 4)
+    partColQ[i] = 1
+  else if (partColQ[i] == 3)
+    partColQ[i] = 0
+  else if (partColQ[i] == 2)
+    partColQ[i] = -1
+  else if (partColQ[i] == 1)
+    partColQ[i] = -2
+}
+
+elasticQ<- partColQ
+
+partColR <- part$r
+
+for(i in 1:length(partColR)){
+  if(partColR[i] ==5)
+    partColR[i] = 2
+  else if(partColR[i] == 4)
+    partColR[i] = 1
+  else if (partColR[i] == 3)
+    partColR[i] = 0
+  else if (partColR[i] == 2)
+    partColR[i] = -1
+  else if (partColR[i] == 1)
+    partColR[i] = -2
+}
+
+empowerR<- partColR
+
+partColS <- part$s
+
+for(i in 1:length(partColS)){
+  if(partColS[i] ==5)
+    partColS[i] = 2
+  else if(partColS[i] == 4)
+    partColS[i] = 1
+  else if (partColS[i] == 3)
+    partColS[i] = 0
+  else if (partColS[i] == 2)
+    partColS[i] = -1
+  else if (partColS[i] == 1)
+    partColS[i] = -2
+}
+
+energizeS<- partColS
+
+#Break down Section 2 for Individual -----
+#Strategic vs. Inspiring
+partColT <- part$t
+
+for(i in 1:length(partColT)){
+  if(partColT[i] >= 3)
+    partColT[i] = 0
+  else if(partColT[i] == 2)
+    partColT[i] = 1
+  else if (partColT[i] == 1)
+    partColT[i] = 2
+}
+
+tEmpower <- partColT
+tEmpower
+
+partColT <- part$t
+
+for(i in 1:length(partColT)){
+  if(partColT[i] <= 3)
+    partColT[i] = 0
+  else if(partColT[i] == 4)
+    partColT[i] = 1
+  else if (partColT[i] == 5)
+    partColT[i] = 2
+}
+
+tEnergize <- partColT
+tEnergize
+
+#I make decisions with input from others vs I take initiative to get things done.
+partColU <- part$u
+
+for(i in 1:length(partColU)){
+  if(partColU[i] >= 3)
+    partColU[i] = 0
+  else if(partColU[i] == 2)
+    partColU[i] = 1
+  else if (partColU[i] == 1)
+    partColU[i] = 2
+}
+
+UEngage <- partColU
+UEngage
+
+partColU <- part$u
+
+for(i in 1:length(partColU)){
+  if(partColU[i] <= 3)
+    partColU[i] = 0
+  else if(partColU[i] == 4)
+    partColU[i] = 1
+  else if (partColU[i] == 5)
+    partColU[i] = 2
+}
+
+UExecute <- partColU
+UExecute
+
+#I pay attention to the details vs I focus on the big picture
+partColV <- part$v
+
+for(i in 1:length(partColV)){
+  if(partColV[i] >= 3)
+    partColV[i] = 0
+  else if(partColV[i] == 2)
+    partColV[i] = 1
+  else if (partColV[i] == 1)
+    partColV[i] = 2
+}
+
+vExecute <- partColV
+vExecute
+
+partColV <- part$v
+
+for(i in 1:length(partColV)){
+  if(partColV[i] <= 3)
+    partColV[i] = 0
+  else if(partColV[i] == 4)
+    partColV[i] = 1
+  else if (partColV[i] == 5)
+    partColV[i] = 2
+}
+
+vEnvision <- partColV
+vEnvision
+
+#Creative vs Diplomatic
+partColW <- part$w
+
+for(i in 1:length(partColW)){
+  if(partColW[i] >= 3)
+    partColW[i] = 0
+  else if(partColW[i] == 2)
+    partColW[i] = 1
+  else if (partColW[i] == 1)
+    partColW[i] = 2
+}
+
+wEnvision <- partColW
+wEnvision
+
+partColW <- part$w
+
+for(i in 1:length(partColW)){
+  if(partColW[i] <= 3)
+    partColW[i] = 0
+  else if(partColW[i] == 4)
+    partColW[i] = 1
+  else if (partColW[i] == 5)
+    partColW[i] = 2
+}
+
+wEnergize <- partColW
+wEnergize
+
+#Adaptable vs Timely
+partColX <- part$x
+
+for(i in 1:length(partColX)){
+  if(partColX[i] >= 3)
+    partColX[i] = 0
+  else if(partColX[i] == 2)
+    partColX[i] = 1
+  else if (partColX[i] == 1)
+    partColX[i] = 2
+}
+
+xElastic <- partColX
+xElastic
+
+partColX <- part$x
+
+for(i in 1:length(partColX)){
+  if(partColX[i] <= 3)
+    partColX[i] = 0
+  else if(partColX[i] == 4)
+    partColX[i] = 1
+  else if (partColX[i] == 5)
+    partColX[i] = 2
+}
+
+xExecute <- partColX
+xExecute  
+
+#I inspire my team to accomplish our goals vs I find creative solutions
+partColY <- part$y
+
+for(i in 1:length(partColY)){
+  if(partColY[i] >= 3)
+    partColY[i] = 0
+  else if(partColY[i] == 2)
+    partColY[i] = 1
+  else if (partColY[i] == 1)
+    partColY[i] = 2
+}
+
+yEnergize <- partColY
+yEnergize
+
+partColY <- part$y
+
+for(i in 1:length(partColY)){
+  if(partColY[i] <= 3)
+    partColY[i] = 0
+  else if(partColY[i] == 4)
+    partColY[i] = 1
+  else if (partColY[i] == 5)
+    partColY[i] = 2
+}
+
+yElastic <- partColY
+yElastic    
+
+#Supportive vs Flexible
+partColZ <- part$z
+
+for(i in 1:length(partColZ)){
+  if(partColZ[i] >= 3)
+    partColZ[i] = 0
+  else if(partColZ[i] == 2)
+    partColZ[i] = 1
+  else if (partColZ[i] == 1)
+    partColZ[i] = 2
+}
+
+zEmpower <- partColZ
+zEmpower
+
+partColZ <- part$z
+
+for(i in 1:length(partColZ)){
+  if(partColZ[i] <= 3)
+    partColZ[i] = 0
+  else if(partColZ[i] == 4)
+    partColZ[i] = 1
+  else if (partColZ[i] == 5)
+    partColZ[i] = 2
+}
+
+zElastic <- partColZ
+zElastic  
+
+#I enjoy planning for the future vs. I enjoy helping others accomplish their goals.
+
+partColAA <- part$aa
+
+for(i in 1:length(partColAA)){
+  if(partColAA[i] >= 3)
+    partColAA[i] = 0
+  else if(partColAA[i] == 2)
+    partColAA[i] = 1
+  else if (partColAA[i] == 1)
+    partColAA[i] = 2
+}
+
+aaEnvision <- partColAA
+aaEnvision
+
+partColAA <- part$aa
+
+for(i in 1:length(partColAA)){
+  if(partColAA[i] <= 3)
+    partColAA[i] = 0
+  else if(partColAA[i] == 4)
+    partColAA[i] = 1
+  else if (partColAA[i] == 5)
+    partColAA[i] = 2
+}
+
+aaEmpower <- partColAA
+aaEmpower    
+
+#I encourage quiet team members to voice their opinions vs. I enjoy working in interdisciplinary environments.
+
+partColAB <- part$ab
+
+for(i in 1:length(partColAB)){
+  if(partColAB[i] >= 3)
+    partColAB[i] = 0
+  else if(partColAB[i] == 2)
+    partColAB[i] = 1
+  else if (partColAB[i] == 1)
+    partColAB[i] = 2
+}
+
+abEmpower <- partColAB
+abEmpower
+
+partColAB <- part$ab
+
+for(i in 1:length(partColAB)){
+  if(partColAB[i] <= 3)
+    partColAB[i] = 0
+  else if(partColAB[i] == 4)
+    partColAB[i] = 1
+  else if (partColAB[i] == 5)
+    partColAB[i] = 2
+}
+
+abElastic <- partColAB
+abElastic    
+
+#I am a trailblazer vs I am a promotoer.
+
+partColAC <- part$ac
+
+for(i in 1:length(partColAC)){
+  if(partColAC[i] >= 3)
+    partColAC[i] = 0
+  else if(partColAC[i] == 2)
+    partColAC[i] = 1
+  else if (partColAC[i] == 1)
+    partColAC[i] = 2
+}
+
+acEnvision <- partColAC
+acEnvision
+
+partColAC <- part$ab
+
+for(i in 1:length(partColAC)){
+  if(partColAC[i] <= 3)
+    partColAC[i] = 0
+  else if(partColAC[i] == 4)
+    partColAC[i] = 1
+  else if (partColAC[i] == 5)
+    partColAC[i] = 2
+}
+
+acEngage <- partColAC
+acEngage      
+
+#I am communicative vs I am concise.
+
+partColAD <- part$ad
+
+for(i in 1:length(partColAD)){
+  if(partColAD[i] >= 3)
+    partColAD[i] = 0
+  else if(partColAD[i] == 2)
+    partColAD[i] = 1
+  else if (partColAD[i] == 1)
+    partColAD[i] = 2
+}
+
+adEngage <- partColAD
+adEngage
+
+partColAD <- part$ab
+
+for(i in 1:length(partColAD)){
+  if(partColAD[i] <= 3)
+    partColAD[i] = 0
+  else if(partColAD[i] == 4)
+    partColAD[i] = 1
+  else if (partColAD[i] == 5)
+    partColAD[i] = 2
+}
+
+adExecute <- partColAD
+adExecute     
+
+#It means more to me when everyone is included vs happy.
+
+partColAE <- part$ae
+
+for(i in 1:length(partColAE)){
+  if(partColAE[i] >= 3)
+    partColAE[i] = 0
+  else if(partColAE[i] == 2)
+    partColAE[i] = 1
+  else if (partColAE[i] == 1)
+    partColAE[i] = 2
+}
+
+aeEngage <- partColAE
+aeEngage
+
+partColAE <- part$ab
+
+for(i in 1:length(partColAE)){
+  if(partColAE[i] <= 3)
+    partColAE[i] = 0
+  else if(partColAE[i] == 4)
+    partColAE[i] = 1
+  else if (partColAE[i] == 5)
+    partColAE[i] = 2
+}
+
+aeEnergize <- partColAE
+aeEnergize     
+
+#Break down Section 3 for Individual ----
+partColAF <- part$af
+
+for(i in 1:length(partColAF)){
+  if(partColAF[i] ==5)
+    partColAF[i] = 2
+  else if(partColAF[i] == 4)
+    partColAF[i] = 1
+  else if (partColAF[i] == 3)
+    partColAF[i] = 0
+  else if (partColAF[i] == 2)
+    partColAF[i] = -1
+  else if (partColAF[i] == 1)
+    partColAF[i] = -2
+}
+
+envisionAF <- partColAF 
+envisionAF
+
+partColAG <- part$ag
+
+for(i in 1:length(partColAG)){
+  if(partColAG[i] ==5)
+    partColAG[i] = 2
+  else if(partColAG[i] == 4)
+    partColAG[i] = 1
+  else if (partColAG[i] == 3)
+    partColAG[i] = 0
+  else if (partColAG[i] == 2)
+    partColAG[i] = -1
+  else if (partColAG[i] == 1)
+    partColAG[i] = -2
+}
+
+executeAG <- partColAG  
+
+partColAH <- part$ah
+
+for(i in 1:length(partColAH)){
+  if(partColAH[i] ==5)
+    partColAH[i] = 2
+  else if(partColAH[i] == 4)
+    partColAH[i] = 1
+  else if (partColAH[i] == 3)
+    partColAH[i] = 0
+  else if (partColAH[i] == 2)
+    partColAH[i] = -1
+  else if (partColAH[i] == 1)
+    partColAH[i] = -2
+}
+
+engageAH <- partColAH 
+
+partColAI <- part$ai
+
+for(i in 1:length(partColAI)){
+  if(partColAI[i] ==5)
+    partColAI[i] = 2
+  else if(partColAI[i] == 4)
+    partColAI[i] = 1
+  else if (partColAI[i] == 3)
+    partColAI[i] = 0
+  else if (partColAI[i] == 2)
+    partColAI[i] = -1
+  else if (partColAI[i] == 1)
+    partColAI[i] = -2
+}
+
+elasticAI <- partColAI
+
+partColAJ <- part$aj
+
+for(i in 1:length(partColAJ)){
+  if(partColAJ[i] ==5)
+    partColAJ[i] = 2
+  else if(partColAJ[i] == 4)
+    partColAJ[i] = 1
+  else if (partColAJ[i] == 3)
+    partColAJ[i] = 0
+  else if (partColAJ[i] == 2)
+    partColAJ[i] = -1
+  else if (partColAJ[i] == 1)
+    partColAJ[i] = -2
+}
+
+empowerAJ <- partColAJ
+
+partColAK <- part$ak
+
+for(i in 1:length(partColAK)){
+  if(partColAK[i] ==5)
+    partColAK[i] = 2
+  else if(partColAK[i] == 4)
+    partColAK[i] = 1
+  else if (partColAK[i] == 3)
+    partColAK[i] = 0
+  else if (partColAK[i] == 2)
+    partColAK[i] = -1
+  else if (partColAK[i] == 1)
+    partColAK[i] = -2
+}
+
+energizeAK <- partColAK
+```
+
+
+
+## Aggregate questions by relevant E. 
+ 
+```{r; echo = TRUE}
+#Each E score for Individual ---- 
+engageScore <- cbind(engageB, engageG, engageN, UEngage, acEngage, adEngage, aeEngage, engageAH)
+envisionScore <- cbind(envisionC, envisionK, envisionM, vEnvision, wEnvision, aaEnvision, acEnvision, envisionAF)
+executeScore <- cbind(executeD, executeF, executeP, UExecute, vExecute, xExecute, adExecute, executeAG)
+elasticScore <- cbind(elasticE, elasticI, elasticQ, xElastic, yElastic, zElastic, abEmpower, elasticAI)
+empowerScore<- cbind(empowerH, empowerL, empowerR, tEmpower, zEmpower, aaEmpower, abEmpower, empowerAJ) 
+energizeScore <- cbind(energizeJ, energizeO, energizeS, tEnergize, wEnergize, yEnergize, aeEnergize, energizeAK)
+```
+
+## This is the main part for how the person's score is compared to the general population.
+__Score is the individual's score; ___PerPerson is the population. Basically, this produces which percentile the individual's score falls within the population distribution. 
+
+```{r}
+#Calculating the Percentile for Individual ----  
+points <- -48:56
+points
+percentiles <- function(points,perc)ecdf(points)(perc)
+percentiles(elasticPerPerson, elasticScore)
+percentiles(empowerPerPerson, empowerScore)
+percentiles(engagePerPerson, empowerScore)
+percentiles(envisionPerPerson, envisionScore)
+percentiles(executePerPerson, executeScore)
+percentiles(energizePerPerson, energizeScore)
+```
+
